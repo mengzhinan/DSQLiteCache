@@ -167,11 +167,8 @@ public class DCache {
         }
     }
 
-    public static boolean isEmpty(String key) {
-        if (key == null || "".equals(key.trim()) || key.trim().length() == 0) {
-            return true;
-        }
-        return false;
+    private static boolean isEmpty(String key) {
+        return key == null || "".equals(key.trim()) || key.trim().length() == 0;
     }
 
     private class DData {
