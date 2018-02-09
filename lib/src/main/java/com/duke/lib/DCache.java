@@ -167,7 +167,7 @@ public class DCache {
         }
     }
 
-    private static boolean isEmpty(String key) {
+    private boolean isEmpty(String key) {
         return key == null || "".equals(key.trim()) || key.trim().length() == 0;
     }
 
