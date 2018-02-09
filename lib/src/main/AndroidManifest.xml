@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.duke.lib">
+
+    <application>
+
+        <!-- 如果更改authorities，记得同时更改DContentResolver中对应的值 -->
+        <provider
+            android:name=".DContentProvider"
+            android:authorities="baofeng.dcache.com.duke.lib.authorities"
+            android:enabled="true"
+            android:exported="true" />
+    </application>
+
+</manifest>
