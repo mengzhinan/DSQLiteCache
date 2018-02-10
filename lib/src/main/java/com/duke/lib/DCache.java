@@ -56,7 +56,7 @@ public class DCache {
     }
 
     public boolean set(String key, byte[] data, long keepTime) {
-        if (isEmpty(key) || data == null || data.length == 0) {
+        if (DUtils.isEmpty(key) || data == null || data.length == 0) {
             return false;
         }
         if (keepTime < 0) {
@@ -84,7 +84,7 @@ public class DCache {
     }
 
     public byte[] get(String key) {
-        if (isEmpty(key)) {
+        if (DUtils.isEmpty(key)) {
             return null;
         }
         DData dData = queryData(key);
@@ -102,7 +102,7 @@ public class DCache {
     }
 
     public boolean remove(String key) {
-        if (isEmpty(key)) {
+        if (DUtils.isEmpty(key)) {
             return false;
         }
         return deleteDataByKey(key);
@@ -130,7 +130,7 @@ public class DCache {
     }
 
     private DData queryData(String key) {
-        if (isEmpty(key)) {
+        if (DUtils.isEmpty(key)) {
             return null;
         }
         String selection = DSQLiteOpenHelper.DTable.COLUMN_C_KEY + " = ?";
@@ -191,10 +191,6 @@ public class DCache {
             //添加
             context.getContentResolver().insert(uri, values);
         }
-    }
-
-    private boolean isEmpty(String key) {
-        return key == null || "".equals(key.trim()) || key.trim().length() == 0;
     }
 
     private class DData {
