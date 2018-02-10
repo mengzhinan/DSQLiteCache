@@ -1,6 +1,7 @@
 package com.duke.lib;
 
 import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
@@ -78,7 +79,7 @@ public class DCache {
                 dData.keepTime = keepTime;
             }
         }
-        // TODO: 2018/2/9 添加或者修改  ？？？？？？？
+        saveOrUpdate(dData);
         return true;
     }
 
@@ -164,6 +165,27 @@ public class DCache {
             list.clear();
             list = null;
             return dData;
+        }
+    }
+
+    private void saveOrUpdate(DData dData) {
+        if (dData == null) {
+            return;
+        }
+        ContentValues values = new ContentValues();
+        values.put(DSQLiteOpenHelper.DTable.COLUMN_C_KEY, dData.key);
+        values.put(DSQLiteOpenHelper.DTable.COLUMN_C_ADDTIME, dData.addTime);
+        values.put(DSQLiteOpenHelper.DTable.COLUMN_C_KEEPTIME, dData.keepTime);
+        values.put(DSQLiteOpenHelper.DTable.COLUMN_C_DATA, dData.data);
+        if (dData.id > 0) {
+            //修改
+            values.put(DSQLiteOpenHelper.DTable.COLUMN_ID, dData.id);
+            context.getContentResolver().update(uri, values,
+                    DSQLiteOpenHelper.DTable.COLUMN_ID + " = ?",
+                    new String[]{String.valueOf(dData.id)});
+        } else {
+            //添加
+            context.getContentResolver().insert(uri, values);
         }
     }
 
