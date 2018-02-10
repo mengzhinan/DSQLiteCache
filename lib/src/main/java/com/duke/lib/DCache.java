@@ -118,11 +118,14 @@ public class DCache {
     }
 
     private void deleteDataById(int id) {
-        context.getContentResolver().delete(uri, DSQLiteOpenHelper.DTable.COLUMN_ID + "=" + id, new String[]{String.valueOf(id)});
+        context.getContentResolver().delete(uri, DSQLiteOpenHelper.DTable.COLUMN_ID + "=" + id,
+                new String[]{String.valueOf(id)});
     }
 
     private boolean deleteDataByKey(String key) {
-        int i = context.getContentResolver().delete(uri, DSQLiteOpenHelper.DTable.COLUMN_C_KEY + "=" + key, new String[]{String.valueOf(key)});
+        int i = context.getContentResolver().delete(uri,
+                DSQLiteOpenHelper.DTable.COLUMN_C_KEY + "=" + key,
+                new String[]{String.valueOf(key)});
         return i > 0;
     }
 
@@ -132,7 +135,8 @@ public class DCache {
         }
         String selection = DSQLiteOpenHelper.DTable.COLUMN_C_KEY + " = ?";
         String[] selectionArgs = new String[]{key};
-        Cursor cursor = context.getContentResolver().query(uri, null, selection, selectionArgs, null);
+        Cursor cursor = context.getContentResolver().query(uri, null,
+                selection, selectionArgs, null);
         if (cursor == null) {
             return null;
         }
