@@ -21,10 +21,10 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String str = new String(DCache.getInstance().get("a"));
+                String str = new String(DCache.get().getAsString("a"));
                 textView.setText(str);
             }
         });
-        DCache.getInstance().set("a", "test".getBytes(), 10000);
+        DCache.get().put("a", "test", 10000);
     }
 }
