@@ -26,10 +26,16 @@ import java.util.ArrayList;
  * @deacription:
  */
 public class DCache {
-    private static Context context;
+
+    public static final int TIME_MINUTE = 60;
+    public static final int TIME_HOUR = TIME_MINUTE * 60;
+    public static final int TIME_DAY = TIME_HOUR * 24;
+
     //如果更改authorities，记得同时更改AndroidManifest.xml中对应的值
     private static String authorities = "baofeng.dcache.com.duke.lib.authorities";
     private static Uri uri;
+
+    private static Context context;
 
     static void setContext(Context context) {
         DCache.context = context;
