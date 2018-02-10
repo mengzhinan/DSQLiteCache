@@ -75,14 +75,13 @@ public class DCache {
     }
 
     private void deleteDataById(int id) {
-        context.getContentResolver().delete(uri, DSQLiteOpenHelper.DTable.COLUMN_ID + "=" + id,
+        context.getContentResolver().delete(uri, DSQLiteOpenHelper.DTable.COLUMN_ID + " = ?",
                 new String[]{String.valueOf(id)});
     }
 
     private boolean deleteDataByKey(String key) {
-
         int i = context.getContentResolver().delete(uri,
-                DSQLiteOpenHelper.DTable.COLUMN_C_KEY + "=" + key,
+                DSQLiteOpenHelper.DTable.COLUMN_C_KEY + " = ?",
                 new String[]{String.valueOf(key)});
         return i > 0;
     }
