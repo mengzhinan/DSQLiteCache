@@ -21,10 +21,13 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String str = new String(DCache.get().getAsString("a"));
+                String str = DCache.get().getAsString("a");
+                if (str == null) {
+                    str = "无数据";
+                }
                 textView.setText(str);
             }
         });
-        DCache.get().put("a", "test", 10000);
+        DCache.get().put("a", "测试数据", 10000);
     }
 }
