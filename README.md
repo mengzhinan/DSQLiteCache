@@ -1,5 +1,5 @@
 # DSQLiteCache
-ASimpleCache是一个优秀的缓存框架。
+ASimpleCache是一个优秀的缓存框架。<br/>
 1、可以缓存各类数据，比喻：字符串、JsonObject、JsonArray、Bitmap、Drawable、序列化的java对象，和 byte数据。
 2、轻，轻到只有一个JAVA文件。
 3、可配置，可以配置缓存路径，缓存大小，缓存数量等。
